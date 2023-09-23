@@ -1,18 +1,15 @@
 package com.jorder.entregas.service.impl;
 
 import com.jorder.entregas.exception.EntidadeNaoEncontradaException;
-import com.jorder.entregas.exception.NegocioException;
 import com.jorder.entregas.model.Cliente;
 import com.jorder.entregas.model.Entrega;
 import com.jorder.entregas.model.StatusEntrega;
-import com.jorder.entregas.repository.ClienteRepository;
 import com.jorder.entregas.repository.EntregaRepository;
 import com.jorder.entregas.service.ClienteService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 @AllArgsConstructor

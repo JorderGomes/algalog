@@ -1,6 +1,5 @@
 package com.jorder.entregas.exception;
 
-import lombok.AllArgsConstructor;
 
 public class EntidadeNaoEncontradaException extends NegocioException {
 

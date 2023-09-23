@@ -5,7 +5,6 @@ import com.jorder.entregas.model.Cliente;
 import com.jorder.entregas.repository.ClienteRepository;
 import com.jorder.entregas.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

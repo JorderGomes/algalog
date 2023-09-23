@@ -1,7 +1,6 @@
 package com.jorder.entregas.service.impl;
 
 import com.jorder.entregas.model.Entrega;
-import com.jorder.entregas.model.StatusEntrega;
 import com.jorder.entregas.repository.EntregaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

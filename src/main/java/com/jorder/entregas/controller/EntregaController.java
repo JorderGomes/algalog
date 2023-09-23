@@ -9,7 +9,6 @@ import com.jorder.entregas.service.impl.AtualizacaoStatusEntregaService;
 import com.jorder.entregas.service.impl.EntregaServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

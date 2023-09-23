@@ -1,19 +1,12 @@
 package com.jorder.entregas.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jorder.entregas.exception.NegocioException;
-import com.jorder.entregas.validation.ValidationGroups;
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.groups.ConvertGroup;
-import jakarta.validation.groups.Default;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
