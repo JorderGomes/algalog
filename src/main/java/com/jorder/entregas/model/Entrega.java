@@ -22,16 +22,26 @@ public class Entrega {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     private Cliente cliente;
+
     @OneToMany(mappedBy = "entrega", cascade = CascadeType.ALL)
     private List<Ocorrencia> ocorrencias = new ArrayList<>();
+
+    @OneToMany(mappedBy = "entrega", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ItemEntrega> itens = new ArrayList<>();
+    
     @Embedded
     private Destinatario destinatario;
+    
     private BigDecimal taxa;
+    
     @Enumerated(EnumType.STRING)
     private StatusEntrega status;
+    
     private OffsetDateTime dataPedido;
+    
     private OffsetDateTime dataFinalizacao;
 
     public Ocorrencia adicionarOcorrencia(String descricao) {
