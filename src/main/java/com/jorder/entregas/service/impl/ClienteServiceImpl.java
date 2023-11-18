@@ -19,7 +19,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public List<Cliente> getClientes() {
-        return null;
+        return null; // TODO: implement this method
     }
 
     @Override
@@ -30,7 +30,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     @Transactional
-    public Cliente createCliente(Cliente cliente) {
+    public Cliente createCliente(Cliente cliente) { // TODO: update email validation
         boolean emailInUse = clienteRepository.findByEmail(cliente.getEmail())
                 .stream()
                 .anyMatch(clienteExistente -> !clienteExistente.equals(cliente));
@@ -43,7 +43,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public Cliente editCliente(Long id, Cliente cliente) {
+    public Cliente editCliente(Long id, Cliente cliente) { // TODO: implement method
         return null;
     }
 
