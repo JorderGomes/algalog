@@ -32,6 +32,6 @@ public class Vendedor {
     private String descricao;
 
     @OneToMany
-    private List<Produto> produto;
+    private List<Produto> produtos;
 
 }

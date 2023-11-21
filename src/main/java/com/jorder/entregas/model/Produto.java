@@ -23,10 +23,10 @@ public class Produto {
     @Size(max = 200)
     private String descricao;
 
-    @NotBlank
+    // @NotBlank
     private float preco;
 
-    @NotBlank
+    // @NotBlank
     private int qtdeEstoque;
 
     @ManyToOne

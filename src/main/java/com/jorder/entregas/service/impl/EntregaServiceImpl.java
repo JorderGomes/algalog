@@ -23,7 +23,7 @@ public class EntregaServiceImpl {
         Cliente cliente = clienteService.getClienteById(entrega.getCliente().getId());
 
         entrega.setCliente(cliente);
-        entrega.setStatus(StatusEntrega.PENDENTE);
+        entrega.setStatus(StatusEntrega.ABERTA);
         entrega.setDataPedido(OffsetDateTime.now());
         return entregaRepository.save(entrega);
     }
