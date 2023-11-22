@@ -66,4 +66,8 @@ public class Entrega {
         setDataFinalizacao(OffsetDateTime.now());
     }
 
+    public void fechar(){
+        setStatus(StatusEntrega.PENDENTE);
+    }
+
 }

@@ -4,6 +4,7 @@ import com.jorder.entregas.mapper.EntregaMapper;
 import com.jorder.entregas.model.Entrega;
 import com.jorder.entregas.model.ItemEntrega;
 import com.jorder.entregas.model.Produto;
+import com.jorder.entregas.model.StatusEntrega;
 import com.jorder.entregas.model.dto.EntregaDto;
 import com.jorder.entregas.model.input.EntregaInput;
 import com.jorder.entregas.repository.EntregaRepository;
@@ -62,10 +63,25 @@ public class EntregaController {
         statusEntregaService.finalizar(id);
     }
 
-    // @PostMapping("itens/{id_entrega}/{id_produto}/{qtde}")
+    @PutMapping("/{id}/fechamento")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<?> fechar(@PathVariable Long id){
+        Optional<Entrega> optEntrega = entregaRepository.findById(id);
+
+        if (!optEntrega.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        if (!optEntrega.get().getStatus().equals(StatusEntrega.ABERTA)) {
+            return ResponseEntity.badRequest().body("Esta entrega já foi fechada.");
+        }
+
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping("itens")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<ItemEntrega> adicionarItemEntrega(
+    public ResponseEntity<?> adicionarItemEntrega(
             @RequestParam Long id_entrega,
             @RequestParam Long id_produto,
             @RequestParam int qtde) {
@@ -74,6 +90,10 @@ public class EntregaController {
 
         if (!optEntrega.isPresent() || !optProduto.isPresent()) {
             return ResponseEntity.notFound().build();
+        }
+
+        if (!optEntrega.get().getStatus().equals(StatusEntrega.ABERTA)) {
+            return ResponseEntity.badRequest().body("Esta entrega não está aberta a modificações.");
         }
 
         ItemEntrega novoItemEntrega = ItemEntrega.builder()
@@ -97,15 +117,21 @@ public class EntregaController {
     public float getValorTotal(@PathVariable Long id_entrega) {
         Optional<Entrega> optEntrega = entregaRepository.findById(id_entrega);
         if (!optEntrega.isPresent()) {
-            return  (float) 0.0;
+            return (float) 0.0;
         }
         float valorItens = itemEntregaRepository.sumPrecoItens(id_entrega);
         return valorItens + Float.parseFloat(optEntrega.get().getTaxa().toString());
     }
 
-    @DeleteMapping("itens/{id_item}")
-    public ResponseEntity<Void> deleteItemEntrega(@PathVariable Long id_item){
-        if (!itemEntregaRepository.existsById(id_item)){
+    @DeleteMapping("itens")
+    public ResponseEntity<?> deleteItemEntrega(@RequestParam Long id_entrega, @RequestParam Long id_item) {
+        Optional<Entrega> optEntrega = entregaRepository.findById(id_entrega);
+
+        if (!optEntrega.get().getStatus().equals(StatusEntrega.ABERTA)) {
+            return ResponseEntity.badRequest().body("Esta entrega não está aberta a modificações.");
+        }
+
+        if (!itemEntregaRepository.existsById(id_item)) {
             return ResponseEntity.notFound().build();
         }
         itemEntregaRepository.deleteById(id_item);
