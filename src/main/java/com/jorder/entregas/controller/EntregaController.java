@@ -75,7 +75,8 @@ public class EntregaController {
         if (!optEntrega.get().getStatus().equals(StatusEntrega.ABERTA)) {
             return ResponseEntity.badRequest().body("Esta entrega já foi fechada.");
         }
-
+        optEntrega.get().fechar();
+        entregaRepository.save(optEntrega.get());
         return ResponseEntity.noContent().build();
     }
 
