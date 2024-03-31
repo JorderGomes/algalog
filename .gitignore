@@ -6,6 +6,8 @@ target/
 
 /src/main/resources/application-dev.properties
 
+.env
+
 ### STS ###
 .apt_generated
 .classpath
