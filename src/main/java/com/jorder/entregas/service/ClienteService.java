@@ -11,7 +11,10 @@ public interface ClienteService {
     Cliente getClienteById(Long id);
 
     Cliente createCliente(Cliente cliente);
+    
     Cliente editCliente(Long id, Cliente cliente);
+    
     void deleteCliente(Long id);
+    
 
 }
