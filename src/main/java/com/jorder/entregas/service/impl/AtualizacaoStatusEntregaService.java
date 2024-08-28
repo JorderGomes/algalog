@@ -37,7 +37,6 @@ public class AtualizacaoStatusEntregaService {
             if (optItemBanco.isPresent()) {
                 int qtdeAtual = optItemBanco.get().getQtde();
                 optItemBanco.get().setQtde(qtdeAtual - item.getQtde());
-                // itemEntregaRepository.save(optItemBanco.get());
             }
         }
         entrega.fechar();

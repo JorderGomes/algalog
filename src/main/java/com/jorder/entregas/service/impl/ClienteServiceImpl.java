@@ -19,7 +19,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public List<Cliente> getClientes() {
-        return null; // TODO: implement this method
+        return clienteRepository.findAll();
     }
 
     @Override
